@@ -59,7 +59,7 @@ class PatientResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('type'),
-                Tables\Columns\TextColumn::make('date_of_birth')->sortable(),
+                Tables\Columns\TextColumn::make('date_of_birth')->sortable()->date(),
                 Tables\Columns\TextColumn::make('owner.name')->searchable(),
             ])
             ->filters([
@@ -83,7 +83,7 @@ class PatientResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\TreatmentsRelationManager::class,
         ];
     }
     
