@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('treatments', function (Blueprint $table) {
             $table->id();
+            $table->string('description');
+            $table->string('note')->nullable();
+            $table->unsignedInteger('price')->nullable();
+            $table->foreignId('patient_id')->constrained('patient')->cascadeOnDelete();
             $table->timestamps();
         });
     }
